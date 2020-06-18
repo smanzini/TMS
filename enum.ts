@@ -1,7 +1,7 @@
 // codificare una lista di valori
 //DAYS è un tipo di enum che riguarda i giorni
 
-enum DAYS { 
+enum DAYS { //DAYS è un arrau
     MON = 1, // si pone 1 il primo giorno della settimana
     TUE,
     WED,
