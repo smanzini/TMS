@@ -1,0 +1,15 @@
+table {
+    width:100%;
+    border:2px solid rgb(3, 3, 17); 
+}
+
+th {
+    background: rgb(47, 17, 212);
+    color: white;
+    padding: 5px;
+}
+td {
+    background: rgb(46, 122, 236);
+    color: white;
+    padding: 5px;
+}

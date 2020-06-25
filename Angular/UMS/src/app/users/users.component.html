@@ -1,0 +1,24 @@
+    <!-- (7) creo qui la tabella che viene richiamata da users.component.ts-->
+    <!-- istruzioni su https://www.w3schools.com/tags/tag_caption.asp -->
+    
+    <table>
+    <caption style = "font-weight:bold"> {{title}} </caption> <!-- caption è il titolo e va messo subito dopo l'intestazione <table>; (10) fra doppie graffe {{ }} inserisco la variable o proprietà della classe UserComponent -->
+    <tr> <!-- The <tr> tag defines a row in an HTML table;a <tr> element contains one or more <th> or <td> elements. -->
+    <th> PNR </th>
+    <th> servizio </th>
+    <th> cognome </th> <!-- th è l'header di una tabella. An HTML table has two kinds of cells: a) Header cells - contains header information created with the <th> element; b) Data cells - contains data created with the <td> element (VEDI https://www.w3schools.com/tags/tag_th.asp)-->
+    <th> nome </th>
+    <th> da </th>
+    <th> a </th>
+    <th> data </th>
+    </tr>
+ <!-- (11) {{users | json}} pipe è la | e vuol dire prendi quello che c'è a sinistra e passalo come parametro a quello che c'è a destra, ovvero json cioè gli elementi dell'array; una direttiva è un costrutto che fa fare qualcosa nel template, ad esempio 'ngfor' è una direttiva-->
+<tr *ngFor = "let user of users"> <!-- (12) aggiungo la direttiva ngfor e definisco 'user' come il singolo elemento dell'array 'users', così per ogni utente dell'array users cicla il singolo user. In TS o JS sarebbe for (let user of users) -->
+    <td>{{ user.pnr}}</td> <!-- (13) td sono i dati dentro la tabella, quindi inserisco il singolo elemento dell'array users, ovvero user.name -->
+    <td>{{ user.service}}</td>
+    <td>{{ user.lastname}}</td>
+    <td>{{ user.name}}</td>
+    <td>{{ user.from}}</td>
+    <td>{{ user.to}}</td>
+    <td>{{ user.date}}</td>
+</table>
