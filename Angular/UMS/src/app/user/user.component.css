@@ -1,0 +1,12 @@
+td {
+    background: rgb(46, 122, 236);
+    color: white;
+    padding: 5px;
+}
+button.delete {
+    padding: 5px;
+    border: 2px solid white;
+    background: white;
+    color: rgb(46, 122, 236);
+    width: 110px;
+}
