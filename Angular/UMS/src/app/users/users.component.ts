@@ -30,9 +30,11 @@ export class UsersComponent implements OnInit { // (1) nomino la classe come use
     ngOnInit (){
         this.users = this.service.getUsers(); // vado a popolare users con il servizio non instanziare mai una classe dentro un constructor ma meglio utilizzare un dependancy injection, che vuol dire che se una classe A dipende da un servizio o da una classe B, angular instanzia automaticamente la classe A (UserService); sarebbe ancora meglio fare la chiamata del metodo service.getusers una volta che il componente è stato inzializzato; Angolar ha degli hook cioè dei ganci in cui si verifica un evento e ci si può agganciare a quell'evento ad esempio la funzione oninit, Angular, una volta che il componente (o direttiva) è stato inizializzato, chiamerà automaticamente questa funzione (su angular.io cercare oninit). Ngonint è un metodo. (più semplicemente avremmo dovuto inizializzare la proprietà all'interno della classe passando il ritorno del metodo getUsers al valore users del componente che è un array)
     }
-    onDeleteUser (user){
-        alert (user.lastname)
+    onDeleteUser (user){ //(37) creo il metodo onDeleteUser che riceve user
+        alert ("Conferma cancellazione prenotazione per " + user.name + " " + user.lastname);
+        this.service.deleteUser(user);
     }
+
         //alert ("Conferma cancellazione prenotazione per " + user.name + " " + user.lastname);
          
     

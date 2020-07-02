@@ -14,8 +14,10 @@
     <th> Actions </th> <!-- (25) aggiungo un altro th che è Actions-->
     </tr>
  <!-- (11) {{users | json}} pipe è la | e vuol dire prendi quello che c'è a sinistra e passalo come parametro a quello che c'è a destra, ovvero json cioè gli elementi dell'array; una direttiva è un costrutto che fa fare qualcosa nel template, ad esempio 'ngfor' è una direttiva-->
-<tr app-user *ngFor = "let user of users" [user-data] = "user"> 
-<!-- (36) qui ASCOLTO evento fra tonde perché è in uscito il valore (onDeleteuser) che è l'alias definito in user.component.ts l'accadere dell'evento e quando accade questo evento il padre  chiamerà il metodo onDeleteUser nella classe users e riceverà il valore $event. Ora occorre creare il metodo nel componente users.component.ts
+<tr app-user="user" *ngFor = "let user of users" [user-data] = "user"
+(onDeleteUser) = "onDeleteUser($event)"
+> 
+<!-- (36) qui ASCOLTO evento fra tonde perché è in uscita il valore (onDeleteuser) che è l'alias definito in user.component.ts l'accadere dell'evento e quando accade questo evento il padre  chiamerà il metodo onDeleteUser nella classe users e riceverà il valore $event. Ora occorre creare il metodo nel componente users.component.ts
 
     (12) aggiungo la direttiva ngfor e definisco 'user' come il singolo elemento dell'array 'users', così per ogni utente dell'array users cicla il singolo user. In TS o JS sarebbe for (let user of users) (23) sposto <app-user></app-user> da app.component.html qua e richiamo l'alias 'user-data' che ho definito in user.component.ts Il nome della variabile user-data (alias) è in input e assegno valore = "user"-->
     
