@@ -1,4 +1,5 @@
-import { UserService } from './../users/user.service'; //(28) in automatico mi fa import dopo che ho inserito nel constructor la dipendenza UserService
+import { UserInterface } from './../interfaces/user-interface';
+import { UserService } from '../services/user.service'; //(28) in automatico mi fa import dopo che ho inserito nel constructor la dipendenza UserService
 // (20) Da terminal con il comando ng generate component user (oppure abbreviato ng g c user) creo un altro componente, simile al componente users che ho generato e mi crea automaticamente tutti i file sotto user: user.component.css, user.component.html, user.component.spec.ts, user.component.ts e crea anche la declaration in app.module.ts e l’import
 
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
@@ -10,7 +11,7 @@ import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-@Input ('user-data') user // (23) occorre dichiarare la variabile user nel componente ts del componente figlio e definirla di tipo input cioè che riceve dati dall'esterno; definisco un alias 'user-data' perché se un domani andrò a cambiare il nome della variabile user, l'alias user-data non cambierà
+@Input ('user-data') user: UserInterface; // (44) tipicizzo la variabile user di tipo UserInterfae e se utilizzassi il comando this.users. avrei accesso a tutti i parametri e metodi dell'array (23) occorre dichiarare la variabile user nel componente ts del componente figlio e definirla di tipo input cioè che riceve dati dall'esterno; definisco un alias 'user-data' perché se un domani andrò a cambiare il nome della variabile user, l'alias user-data non cambierà
 @Output ('onDeleteUser') userDelete = new EventEmitter();
 //@Output ('onDeleteUser') userDelete new EventEmitter(); (34) dichiaro la variabile output per definire un evento esterno (userDelete) con un alias 'onDeleteuser' e inizializzo la variabile come un evento new (perché è una nuova istanza) di EventEmitter che è un gestore eventi che si trova in Angular core
   

@@ -1,4 +1,4 @@
-import { UserService } from './users/user.service';
+import { UserService } from './services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -6,13 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component'; //con l’autocomplete l’editor in automatico inserisce da dove deve importare il componente AppComponent from './app.component'
 import { UsersComponent } from './users/users.component';
 import { UserComponent } from './user/user.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 //
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    UserComponent,  
+    UserComponent,
+    UserDetailComponent,  
     //UsersComponent // (5) istruisco Angular di caricare sia AppComponent che UsersComponent
     // con l'autocomplete l'editor in automatico inserisce l'istruzione import { UsersComponent } from './users/users.component';
   ],

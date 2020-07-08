@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+/* (49) inserisco lo stile che riguarda tutta l'app */
+.main {
+    width: 98%;
+    margin: auto;
+    vertical-align: top;
+}
+
+.users {
+    float: left;
+    width: 60%;
+}
+
+.userDetail {
+    float: left;
+    width: 40%;
+}
+
+
+.button-save { /* (56) inserisco lo stile per il bottone SAVE (*/
+    padding: 5px;
+    border: 2px solid white;
+    background: white;
+    color: rgb(46, 122, 236);
+    width: 110px;
+    font-weight: bold;
+}
+
+.form-footer { /* (57) posizione dove sta il bottone SAVE */ 
+text-align: center;
+padding: 10px;
+}
+
+.form-group {
+    padding: 10px;
+    border: 1px solid blue;
+    margin-bottom: 10px;
+}
+
+.form-group label{
+    display: inline-block;
+    text-align: left;
+    padding: 5px;
+    width: 120px;
+}
+
+.form-group input{
+    border: 1px solid green;
+    text-align: left;
+    padding: 5px;
+    width: 150px;
+}

@@ -1,3 +1,12 @@
 <h1> Online Booking Platform </h1>
+
+<div class="main"> <!-- (48) inserisco il comando div per definire le sezioni con classe main, users e userdetail; poi creerò a destra un nuovo componente della tabella per la sezione dove modificare utente; A <div> section in a document that is styled with CSS: The <div> tag defines a division or a section in an HTML document -->
+<div class="=users"> 
 <app-users></app-users> <!-- (4) devo dichiarare questo componente in Angular cioè bisogna istruire Angular per caricare questo componente in app.module.ts -->
 <!-- <app-user></app-user>  (21) quindi nel componente principale dell'app inserisco anche <app-user> -->
+</div>
+    <div class="userDetail" *ngIf="false">
+        <!-- (58) inserisco ngIF è una direttiva che mostra l'elemento solo se è TRUE; se l'elemento rimane nel dom e ce ne sono tanti diventa pesante la pagina; però occorre che questo ngIF sia dinamico inserendo un pulsante che l'utente viene selezionato per mostrare il form-->
+        <app-user-detail></app-user-detail> <!-- (52) inserisco il tag del selettore del componente appena creato user-detail -->
+    </div>
+</div>

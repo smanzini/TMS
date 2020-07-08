@@ -1,12 +1,13 @@
+import { UserInterface } from './../interfaces/user-interface'; // (43) in automatico Angular importa UserInterface
 // (15) creo una classe UserService (che esporto) perché un domani per esempio vado a prendere i dati dell'array da un server in maniera dinamica
-
+// (38) creo la cartella services e ci metto il file user.service.ts che era prima nel folder users
 import { Injectable } from '@angular/core';
 
 // (18) definisco un servizio come injectable in modo tale che Angular sappia che questo servizio ha delle dipendenze
 @Injectable() //è un decoratore indica ad Angular che questo servizio può avere delle dipendenze, prima di creare un single tone, cioè una singola istanza
 export class UserService {
-    users = [ //(29) inserisco come variabile della classe UserService l'array users
-        {
+    users: Array <UserInterface> = [ // (42) vado a dichiarare l'array con il nome 'Array' e fra <> metto l'interface che ho appena creato nel folder interfaces e in automatico Angular importa UserInterface (29) inserisco come variabile della classe UserService l'array users
+        { //(39) definisco il tipo di ogni variabile (es. se stringa o number) creando una INTERFACE per estendere una classe definendo i tipi di variabili
             pnr: '645321',
             service: 'flight',
             name: 'Stefano',
