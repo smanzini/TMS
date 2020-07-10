@@ -5,7 +5,20 @@ td {
 }
 button.delete {
     padding: 5px;
-    border: 2px solid white;
+    border: 2px solid blue;
+    background: white;
+    color: rgb(46, 122, 236);
+    width: 110px;
+}
+
+button.edit{
+    color: rgb(46, 122, 236);
+    background: white;
+}
+
+button.update { /* (61) aggiungo lo stile del bottone modifica */
+    padding: 5px;
+    border: 2px solid blue;
     background: white;
     color: rgb(46, 122, 236);
     width: 110px;

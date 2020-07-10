@@ -6,6 +6,7 @@
     <td>{{ user.to}}</td>
     <td>{{ user.date}}</td>
     <td> <!-- (26) aggiungo un altro td che è Delete ed aggiungo il bottone e nel .css aggiungo lo stile button.delete dove delete è la classe, quindi qui devo aggiungere la classe "delete"-->
-        <button class="delete" (click)="deleteUser(user)"> CANCELLARE</button> <!-- (26) all'evento che chiamo click viene richiamato il metodo deleteUser che ho definito in user.component.ts e viene scritto il cognome-->
+        <button class="update" (click)="updateUser()"> MODIFICA </button> <!--(60) aggiungo il bottone per modifica utente; (62) inserisco il nuovo metodo updateUser -->
+        <button class="delete" (click)="deleteUser()"> CANCELLARE </button> <!-- (26) all'evento che chiamo click viene richiamato il metodo deleteUser che ho definito in user.component.ts e viene scritto il cognome-->
     </td>
     <!-- (22) per creare una dipendenza fra componente padre (users) e componente figlio (user) prendo tutta la struttura (sopra) della tabella che avevto creato nel users.component.html e la sposto in user.component.html -->

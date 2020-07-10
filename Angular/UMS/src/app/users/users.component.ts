@@ -6,9 +6,9 @@ import { UserService } from '../services/user.service';
 // poi per farlo diventare componente, occorre un ‘decorator’ ovvero un @Component e con l’autocomplete l’editor in automatico inserisce da dove deve importare il componente from @angular/core
 //
 
-import { Component, OnInit } from '@angular/core'; //con l’autocomplete l’editor in automatico inserisce da dove deve importare il componente from @angular/core + importa anche la funzione OnInit
+import { Component, OnInit, Output, EventEmitter } from '@angular/core'; //con l’autocomplete l’editor in automatico inserisce da dove deve importare il componente from @angular/core + importa anche la funzione OnInit
 import { sharedStylesheetJitUrl } from '@angular/compiler';
-//import { Http2ServerRequest } from 'http2';
+
 
 @Component({ // (2) definisco un decorator che è una funzione che aggiunge delle proprietà ad una classe normale
             // all'interno si passa oggetto di configurazione
@@ -25,19 +25,24 @@ export class UsersComponent implements OnInit { // (1) nomino la classe come use
     title = "Travellers"; //(9) aggiungo la variabile o proprietà title che poi vado a pubblicare in users.component.html
     users: UserInterface [] = []; //array (45) anche qui tipicizzo la variabile users e dico che è di tipo UserInterface (dove ci sono tutti i tipi dei parametri dell'array)
         // (14) invece di inserire qui gli elementi dell'array vado a creare un servizio esterno, quindi creo un file sotto users che chiamo user.service.ts (user al singolare)
-    constructor (private service: UserService){ // (16) variabile di nome service di tipo private (vuol dire che la proprietà non è  accessibile dalle classi che ereditano dalla principale) della classe UserService; instanzio la classe come un dependancy injection, ma in questo caso no sa dove andare a prendere il servizio UserService, quindi bisogna dichiararlo come provider nel modulo app.module.ts
+   @Output() updateUser = new EventEmitter<UserInterface>(); // (66) inserisco un evento che chiamo updateUser in Output, Il componente figlio User può emettere un evento (es. modifica) e lo scala in alto al componente padre e che lo rilancia alla componente principalde dell’app (app.component) che lo ascolta
+        constructor (private service: UserService){ // (16) variabile di nome service di tipo private (vuol dire che la proprietà non è  accessibile dalle classi che ereditano dalla principale) della classe UserService; instanzio la classe come un dependancy injection, ma in questo caso no sa dove andare a prendere il servizio UserService, quindi bisogna dichiararlo come provider nel modulo app.module.ts
         // const service = new UserService(): se non mi accetta let per definire la variabile service e non è utilizzata in altre parti, allora posso settarla come const; UserService è la classe definita nel file user.service.ts
     }    
     ngOnInit (){
         this.users = this.service.getUsers(); // vado a popolare users con il servizio non instanziare mai una classe dentro un constructor ma meglio utilizzare un dependancy injection, che vuol dire che se una classe A dipende da un servizio o da una classe B, angular instanzia automaticamente la classe A (UserService); sarebbe ancora meglio fare la chiamata del metodo service.getusers una volta che il componente è stato inzializzato; Angolar ha degli hook cioè dei ganci in cui si verifica un evento e ci si può agganciare a quell'evento ad esempio la funzione oninit, Angular, una volta che il componente (o direttiva) è stato inizializzato, chiamerà automaticamente questa funzione (su angular.io cercare oninit). Ngonint è un metodo. (più semplicemente avremmo dovuto inizializzare la proprietà all'interno della classe passando il ritorno del metodo getUsers al valore users del componente che è un array)
         // (45) con il comando this.users. ho accesso a tutti i parametri e metodi dell'array
     }
-    onDeleteUser (user){ //(37) creo il metodo onDeleteUser che riceve user
+    onDeleteUser (user:UserInterface){ //(37) creo il metodo onDeleteUser che riceve user di tipo UserInterface (Hidran invece lo ha chiamato User) che è nel file user-interface
         alert ("Conferma cancellazione prenotazione per " + user.name + " " + user.lastname);
         this.service.deleteUser(user);
     }
 
         //alert ("Conferma cancellazione prenotazione per " + user.name + " " + user.lastname);
-         
-    
+    onSelectUser (user:UserInterface) {
+        alert("Conferma modifica prenotazione per" + user.name + " " + user.lastname)
+        // (65) implemento il metodo onSelectUser
+        this.updateUser.emit(user);
+        //(67) emetto evento updateUser che viene lanciato all'esterno e l'app.component può ascoltare l'evento
+    }
 }
