@@ -5,13 +5,13 @@
     <caption style = "font-weight:bold"> {{title}} </caption> <!-- caption è il titolo e va messo subito dopo l'intestazione <table>; (10) fra doppie graffe {{ }} inserisco la variable o proprietà della classe UserComponent -->
     <tr> <!-- The <tr> tag defines a row in an HTML table;a <tr> element contains one or more <th> or <td> elements. -->
     <th> PNR </th>
-    <th> servizio </th>
-    <th> cognome </th> <!-- th è l'header di una tabella. An HTML table has two kinds of cells: a) Header cells - contains header information created with the <th> element; b) Data cells - contains data created with the <td> element (VEDI https://www.w3schools.com/tags/tag_th.asp)-->
-    <th> nome </th>
-    <th> da </th>
-    <th> a </th>
-    <th> data </th>
-    <th> Actions </th> <!-- (25) aggiungo un altro th che è Actions-->
+    <th> Servizio </th>
+    <th> Cognome </th> <!-- th è l'header di una tabella. An HTML table has two kinds of cells: a) Header cells - contains header information created with the <th> element; b) Data cells - contains data created with the <td> element (VEDI https://www.w3schools.com/tags/tag_th.asp)-->
+    <th> Nome </th>
+    <th> Da </th>
+    <th> A </th>
+    <th> Data </th>
+    <th> Azioni </th> <!-- (25) aggiungo un altro th che è Actions-->
     </tr>
  <!-- (11) {{users | json}} pipe è la | e vuol dire prendi quello che c'è a sinistra e passalo come parametro a quello che c'è a destra, ovvero json cioè gli elementi dell'array; una direttiva è un costrutto che fa fare qualcosa nel template, ad esempio 'ngfor' è una direttiva-->
 <tr app-user="user" *ngFor = "let user of users" [user-data] = "user"
