@@ -42,7 +42,9 @@ export class UsersComponent implements OnInit { // (1) nomino la classe come use
     onSelectUser (user:UserInterface) {
         alert("Conferma modifica prenotazione per" + user.name + " " + user.lastname)
         // (65) implemento il metodo onSelectUser
-        this.updateUser.emit(user);
+        const userCopy = Object.assign({},user);
+        this.updateUser.emit(userCopy);
         //(67) emetto evento updateUser che viene lanciato all'esterno e l'app.component può ascoltare l'evento
+        // (76) creo un oggetto user che è una copia in modo tale che se modifico i dati dell'utente user nella tabella modifica, non vengono modificati nella tabella degli users fintantoché non clicco il bottone SALVA; (77) definisco una costante che chiamo userCopy con il comando assign, ovvero assegna il valore di destra user al valore di sinistra che in questo caso è vuoto 
     }
 }

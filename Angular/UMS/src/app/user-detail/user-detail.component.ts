@@ -14,5 +14,7 @@ constructor() { }
 
   ngOnInit(): void {
   }
-
+  saveUser(){ //(79) inserisco il metodo saveUser e metto un alert indicando l'utente
+    alert(this.user.id) 
+  }
 }
