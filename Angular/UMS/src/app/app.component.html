@@ -8,8 +8,8 @@
 <!-- <app-user></app-user>  (21) quindi nel componente principale dell'app inserisco anche <app-user> -->
 </div>
 
-    <div class="userDetail" *ngIf="userSelected">
-        <!-- (58) inserisco ngIF è una direttiva che mostra l'elemento solo se è TRUE; se l'elemento rimane nel dom e ce ne sono tanti diventa pesante la pagina; però occorre che questo ngIF sia dinamico inserendo un pulsante che l'utente viene selezionato per mostrare il form; (59) inserisco come proprietà di ngIF userSelected, ovvero mostra elemento solo nel caso in cui venga selezionato un utente -->
+    <div class="userDetail" *ngIf="showTable">
+        <!-- (58) inserisco ngIF è una direttiva che mostra l'elemento solo se è TRUE; se l'elemento rimane nel dom e ce ne sono tanti diventa pesante la pagina; però occorre che questo ngIF sia dinamico inserendo un pulsante che l'utente viene selezionato per mostrare il form; (59) inserisco come proprietà di ngIF userSelected, ovvero mostra elemento solo nel caso in cui venga selezionato un utente (86) sostituisco userSelected con la variabile showTable, cioè il componente user-detail (sotto) viene mostrato non sulla base dell'utente, ma della variabile showTable in app.component.ts, ovvero se è false (utente non ancora selezionato) non viene mostrata, e se è true (utente selezionato) allora viene mostrata -->
         <app-user-detail class="userDetail" [user]= "userSelected"> <!-- (73) per ricevere la variabile user in Input la metto fra parentesi quadre -->
     </app-user-detail> <!-- (52) inserisco il tag del selettore del componente appena creato user-detail -->
     </div>
