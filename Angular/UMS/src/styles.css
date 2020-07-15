@@ -28,6 +28,14 @@
     font-weight: bold;
 }
 
+.button-create { /* inserisco lo stile per il bottone NEW USER (*/
+    padding: 5px;
+    border: 2px solid rgb(46, 122, 236);
+    background: blue;
+    color: white;
+    width: 110px;
+    font-weight: bold;
+}
 .form-footer { /* (57) posizione dove sta il bottone SAVE */ 
 text-align: center;
 padding: 10px;

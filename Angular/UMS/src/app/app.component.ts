@@ -16,4 +16,8 @@ export class AppComponent {
     this.showTable = true; //(85) la variabile boolean viene settata a true solo se viene selezionato l'utente
     this.userSelected = user;
   }
+  newUser(){ //(92) creo il metodo newUser
+    this.userSelected = new userClass(); //(92) se  è stato selezionato un utente per la modifica, ad esempio, userSelected sarà uguale all'utente selezionato, ma se voglio creare un nuovo utente  devo reinizializzare userSelected come new userClass in modo tale che scompaia la tabella
+    this.showTable = true; //(93) e quindi devo mostrare la tabella di inserimento 
+  }
 }

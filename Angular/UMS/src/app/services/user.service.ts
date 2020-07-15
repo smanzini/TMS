@@ -48,8 +48,21 @@ export class UserService {
         deleteUser (user) { // (30) aggiungo il metodo nel componente padre (users) deleteUser per cancellare gli utenti, che poi verrà richiamato nel componente figlio (user)
             let index = this.users.indexOf(user); //(31) devo definire l'indice dell'elemento array che poi devo andare a cancellare
             if (index>=0) {
-                this.users.splice(index,1); //splice è un metodo dell'array con posizione (indice) dell'elemento e quanti elementi voglio eliminare (in questo caso 1) e se volessi anche aggiungere altri elementi, ma prima bisogna definire l'indice dell'elemento
-            }
+                this.users.splice(index,1); // (31)splice è un metodo dell'array con posizione (indice) dell'elemento e quanti elementi voglio eliminare (in questo caso 1) e se volessi anche aggiungere altri elementi, ma prima bisogna definire l'indice dell'elemento
+                            }
             
+                  }
+            // (89) creo il metodo updateUser
+        updateUser(user: UserInterface) { // (90) occorre trovare l'id dell'utente nell'array users per andare ad aggiornare l'utente giusto; uso findIndex che è una funzione che ritorna true se trova il valore v all'interno della parentesi; se id dell'utente passato dalla funzione è lo stesso id dell'utente che dobbiamo aggiornare
+            const idx = this.users.findIndex((v) => v.id === user.id);
+            alert(idx);
+            if (idx !== -1) { //(91) se idx è diverso da -1 vuol dire che la costante idx è quella giusta, quindi andiamo ad aggiornare l'array
+            this.users[idx] = user;
+            }
         }
+        //(94) creo il metodo createUser
+        createUser(user: UserInterface) { // (94) occorre trovare l'id dell'utente nell'array users per andare ad aggiornare l'utente giusto; uso findIndex che è un ciclo che ritorna true se trova il valore v all'interno della parentesi; se id dell'utente passato dalla funzione è lo stesso id dell'utente che dobbiamo aggiornare. NON devo cercare l'indice perché è un utente nuovo quindi sarà 0
+            this.users.splice(0,0,user); // (94) splice è un metodo dell'array con posizione (indice) in questo caso 0 perché è un nuovo utente, quanti elementi voglio eliminare (in questo caso 0) e che voglio  aggiungere un nuovo user
+            }
+
 }
