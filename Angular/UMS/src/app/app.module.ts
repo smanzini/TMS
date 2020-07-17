@@ -8,6 +8,7 @@ import { UsersComponent } from './users/users.component';
 import { UserComponent } from './user/user.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import {FormsModule} from '@angular/forms'; //(74) occorre aggiungere anche import FormsModule da @angular/forms per avere accesso a tutta la parte di form 
+import '@angular/common/locales/global/it'; //(109)importo i local data per IT 8 vedere guida ‘internationalization’ https://angular.io/guide/i18n 
 
 @NgModule({
   declarations: [

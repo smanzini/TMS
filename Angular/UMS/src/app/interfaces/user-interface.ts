@@ -10,6 +10,7 @@ export class userClass implements UserInterface {
             from: string;
             to: string;
             date: string;
+            rate;
             constructor () {
                 this.id= 0; // (82) inizializzo tutti i valori a zero o vuoti -> quindi se id è zero allora sto inserendo un nuovo utente, se invece è maggiore di zero, vuol dire che sto modificando un utente
                 this.pnr='';
@@ -19,6 +20,7 @@ export class userClass implements UserInterface {
                 this.lastname='';
                 this.name='';
                 this.service='';
+                this.rate=0;
             }
 }
 export interface UserInterface { //(41) tipicizzo i parametri dell'array -> al posto del nome User utilizzato da Hidran, utilizzo UserInterface
@@ -30,4 +32,5 @@ export interface UserInterface { //(41) tipicizzo i parametri dell'array -> al p
             from: string;
             to: string;
             date: string;
+            rate: number;
 }

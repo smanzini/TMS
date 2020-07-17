@@ -7,15 +7,16 @@ import { Injectable } from '@angular/core';
 @Injectable() //è un decoratore indica ad Angular che questo servizio può avere delle dipendenze, prima di creare un single tone, cioè una singola istanza
 export class UserService {
     users: Array <UserInterface> = [ // (42) vado a dichiarare l'array con il nome 'Array' e fra <> metto l'interface che ho appena creato nel folder interfaces e in automatico Angular importa UserInterface (29) inserisco come variabile della classe UserService l'array users
-        { //(39) definisco il tipo di ogni variabile (es. se stringa o number) creando una INTERFACE per estendere una classe definendo i tipi di variabili
-            id: 1, //(80) inserisco id di ogni utente per sapere quale utente vado a modificare, ma anche perché quando andrò a creare un utente verifico se quell'id esiste già
+         //(39) definisco il tipo di ogni variabile (es. se stringa o number) creando una INTERFACE per estendere una classe definendo i tipi di variabili
+         {id: 1, //(80) inserisco id di ogni utente per sapere quale utente vado a modificare, ma anche perché quando andrò a creare un utente verifico se quell'id esiste già
             pnr: '645321',
             service: 'flight',
             name: 'Stefano',
             lastname: 'Manzini',
             from: 'Linate',
             to: 'Charles de Gaulle',
-            date: '30-06-2020'
+            date: '30-06-2020',
+            rate: 140,
         }, {
             id: 2,
             pnr: '563421',
@@ -24,7 +25,8 @@ export class UserService {
             lastname: 'Manzini',
             from: 'Malpensa',
             to: 'Fiumicino',
-            date: '03-07-2020'
+            date: '03-07-2020',
+            rate: 120,
         }, {
             id: 3,
             pnr: '465312',
@@ -33,7 +35,8 @@ export class UserService {
             lastname: 'Manzini',
             from: 'Linate',
             to: 'London City',
-            date: '12-08-2020'
+            date: '12-08-2020',
+            rate: 98,
         }
                 ]
 

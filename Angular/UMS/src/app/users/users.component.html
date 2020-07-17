@@ -2,7 +2,7 @@
     <!-- istruzioni su https://www.w3schools.com/tags/tag_caption.asp -->
     
     <table>
-    <caption style = "font-weight:bold"> {{title}} </caption> <!-- caption è il titolo e va messo subito dopo l'intestazione <table>; (10) fra doppie graffe {{ }} inserisco la variable o proprietà della classe UserComponent -->
+    <caption style = "font-weight:bold;color:blue; text-align:center; padding: 0.3cm"> {{title | uppercase | titlecase}} </caption> <!-- caption è il titolo e va messo subito dopo l'intestazione <table>; (10) fra doppie graffe {{ }} inserisco la variable o proprietà della classe UserComponent; (107) inserisco la PIPE con uppercase per tutto maiuscolo e titlecase per le prime lettere maiuscole-->
     <tr> <!-- The <tr> tag defines a row in an HTML table;a <tr> element contains one or more <th> or <td> elements. -->
     <th> PNR </th>
     <th> Servizio </th>
@@ -11,6 +11,7 @@
     <th> Da </th>
     <th> A </th>
     <th> Data </th>
+    <th> Tariffa </th>
     <th> Azioni </th> <!-- (25) aggiungo un altro th che è Actions-->
     </tr>
  <!-- (11) {{users | json}} pipe è la | e vuol dire prendi quello che c'è a sinistra e passalo come parametro a quello che c'è a destra, ovvero json cioè gli elementi dell'array; una direttiva è un costrutto che fa fare qualcosa nel template, ad esempio 'ngfor' è una direttiva-->
