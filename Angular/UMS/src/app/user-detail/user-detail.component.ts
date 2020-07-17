@@ -9,10 +9,18 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-@Input()user: UserInterface; // (72) devo creare una variabile di tipo input per ricevere i dati dal form modifica, quindi user di tipo UserInterface
+  private userCopy: UserInterface; //(101) creo una copia dell'oggetto user
+  private _user: UserInterface; //(102) creo un'altra variabile private _user e poi faccio un SETTER e GETTER di questa variabile
+  @Input() set user(user: UserInterface){ // (72) devo creare una variabile di tipo input per ricevere i dati dal form modifica, quindi user di tipo UserInterface
   //(88) devo iniettare il servizio UserService nel constructor, definendo la varibile private userServiceVar di tipo UserService, così mi crea automaticamente la variabile userServiceVar e la popola nel constructor (ovvero come this.userServiceVar = userServiceVar)
-
-  //userServiceVar: UserService;
+  //(102) uso la funzione SET (SETTER) che riceve un user di tipo UserInterface
+  this._user = user; //(103) definisco la variabile private _user come uguale a user 
+  this.userCopy = Object.assign({},user);//(104) mappo anche userCopy facendomi una copia di user con object assign, ovvero assegna il valore di destra user al valore di sinistra che in questo caso è vuoto; quindi per un utente già esistente, per non perdere i parametri originali, li assegno a userCopy e quando clicco RESET, la variabile private _user ritorna uguale alla copia userCopy (copia dell'originale)
+  
+  }
+  get user() { //(105) mapo anche la funzione GETTER 
+    return this._user;
+  }
 constructor(private userServiceVar: UserService) { 
   //this.userServiceVar = userServiceVar;
 }
@@ -27,9 +35,11 @@ constructor(private userServiceVar: UserService) {
           }
     
             }
-    resetTable () {// (96) creo il metodo resetTable e 
+    resetTable (form) {// (96) creo il metodo resetTable e 
    if (this.user.id === 0) {
-     this.user = new userClass(); //(96) ripopolo la variabile
+     this.user = new userClass(); //(96) ripopolo la variabile user (Hidran chama User la userClass)
+                           } else {
+                          this.user = this.userCopy; //(100) se l'id non è zero, quindi è un utente esistente, allora cancello la tabella accedendo al form (ngForm) con form.reset; (106) Quindi per un utente già esistente, per non perdere i parametri originali, li assegno a userCopy e QUI quando clicco RESET, la variabile private _user ritorna uguale alla copia userCopy (copia dell'originale)
                            }
   }
 }
