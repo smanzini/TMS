@@ -4,7 +4,7 @@
     <td>{{ user.name}}</td>
     <td>{{ user.from}}</td>
     <td>{{ user.to}}</td>
-    <td>{{ user.date}}</td>
+    <td>{{ user.date | date :'dd/MM/yyyy': 'GMT+1': 'it-IT'}}</td> <!-- (109) inserisco la PIPE DATE -->
     <td>{{ user.rate | currency :'EUR':'symbol':'2.2-4': 'it-IT'}}</td>
     <td> <!-- (26) aggiungo un altro td che è Delete ed aggiungo il bottone e nel .css aggiungo lo stile button.delete dove delete è la classe, quindi qui devo aggiungere la classe "delete" (108) inserisco una PIPE per la currency (cercare su angular.io API list e poi PIPES) {{ value_expression | currency [ : currencyCode [ : display [ : digitsInfo [ : locale ] ] ] ] }} -->
         <button class="update" (click)="updateUser()"> MODIFICA </button> <!--(60) aggiungo il bottone per modifica utente; (62) inserisco il nuovo metodo updateUser -->

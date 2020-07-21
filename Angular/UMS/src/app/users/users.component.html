@@ -1,8 +1,25 @@
     <!-- (7) creo qui la tabella che viene richiamata da users.component.ts-->
     <!-- istruzioni su https://www.w3schools.com/tags/tag_caption.asp -->
+    <!-- (111) con il comando da terminale ng pipe ucfirst posso creare un file di pipe (nome a caso, ad es. ucfirst) per fare una custom pipe; altrimenti aggiungo qui o in app.module.ts:
+        import { Pipe, PipeTransform} from '@angular/core';
+        @Pipe({
+            name: 'ucfirst'
+        })
+    export class ucFirstPipe implements PipeTransform {
+        transform (value:string): any {
+            return value.split(' ')
+            .map (word:string) => " " + word.substr(0,1) //con .map divido la frase in array di parole
+            .toLocaleUpperCase() + '' + word.substr(1)) //con .substr indico che alla posizione 0 per 1 carattere e lo trasformo in uppercase e poi aggiungo tutto il resto della parola con (1) 
+            .join('');
+        }
+    }
+    <caption {{ titleList | ucfirst}}
+    -->
+    
     
     <table>
-    <caption style = "font-weight:bold;color:blue; text-align:center; padding: 0.3cm"> {{title | uppercase | titlecase}} </caption> <!-- caption è il titolo e va messo subito dopo l'intestazione <table>; (10) fra doppie graffe {{ }} inserisco la variable o proprietà della classe UserComponent; (107) inserisco la PIPE con uppercase per tutto maiuscolo e titlecase per le prime lettere maiuscole-->
+     <!-- {{ titleList | ucfirst}} {{title | uppercase | titlecase}} -->
+    <caption style = "font-weight:bold;color:blue; text-align:center; padding: 0.3cm">  {{title | uppercase | titlecase}} </caption> <!-- caption è il titolo e va messo subito dopo l'intestazione <table>; (10) fra doppie graffe {{ }} inserisco la variable o proprietà della classe UserComponent; (107) inserisco la PIPE con uppercase per tutto maiuscolo e titlecase per le prime lettere maiuscole-->
     <tr> <!-- The <tr> tag defines a row in an HTML table;a <tr> element contains one or more <th> or <td> elements. -->
     <th> PNR </th>
     <th> Servizio </th>

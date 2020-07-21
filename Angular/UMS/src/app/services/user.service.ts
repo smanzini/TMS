@@ -15,8 +15,8 @@ export class UserService {
             lastname: 'Manzini',
             from: 'Linate',
             to: 'Charles de Gaulle',
-            date: '30-06-2020',
-            rate: 140,
+            date: '06-30-2020',
+            rate: 140
         }, {
             id: 2,
             pnr: '563421',
@@ -25,8 +25,8 @@ export class UserService {
             lastname: 'Manzini',
             from: 'Malpensa',
             to: 'Fiumicino',
-            date: '03-07-2020',
-            rate: 120,
+            date: '07-03-2020',
+            rate: 120
         }, {
             id: 3,
             pnr: '465312',
@@ -35,8 +35,8 @@ export class UserService {
             lastname: 'Manzini',
             from: 'Linate',
             to: 'London City',
-            date: '12-08-2020',
-            rate: 98,
+            date: '08-12-2020',
+            rate: 98
         }
                 ]
 

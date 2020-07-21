@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 /* (49) inserisco lo stile che riguarda tutta l'app */
+/* (115) posso rimuovere tutti gli stili, perché adesso uso BOOTSTRAP
 .main {
     width: 98%;
     margin: auto;
@@ -18,8 +19,7 @@
     width: 65%;
 }
 
-
-.button-save { /* (56) inserisco lo stile per il bottone SAVE (*/
+.button-save { /* (56) inserisco lo stile per il bottone SAVE (
     padding: 5px;
     border: 2px solid white;
     background: white;
@@ -28,7 +28,7 @@
     font-weight: bold;
 }
 
-.button-create { /* inserisco lo stile per il bottone NEW USER (*/
+.button-create { /* inserisco lo stile per il bottone NEW USER (
     padding: 5px;
     border: 2px solid rgb(46, 122, 236);
     background: blue;
@@ -36,7 +36,7 @@
     width: 110px;
     font-weight: bold;
 }
-.form-footer { /* (57) posizione dove sta il bottone SAVE */ 
+.form-footer { /* (57) posizione dove sta il bottone SAVE 
 text-align: center;
 padding: 10px;
 }
@@ -60,3 +60,5 @@ padding: 10px;
     padding: 5px;
     width: 150px;
 }
+
+*/

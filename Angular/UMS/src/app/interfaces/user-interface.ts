@@ -5,21 +5,21 @@ export class userClass implements UserInterface {
             id: number;
             pnr: string;
             service: string;
-            name: string;
             lastname: string;
+            name: string;
             from: string;
             to: string;
             date: string;
-            rate;
+            rate: number;
             constructor () {
                 this.id= 0; // (82) inizializzo tutti i valori a zero o vuoti -> quindi se id è zero allora sto inserendo un nuovo utente, se invece è maggiore di zero, vuol dire che sto modificando un utente
                 this.pnr='';
-                this.date='';
-                this.from='';
-                this.to='';
+                this.service='';
                 this.lastname='';
                 this.name='';
-                this.service='';
+                this.from='';
+                this.to='';
+                this.date='';
                 this.rate=0;
             }
 }
@@ -27,8 +27,8 @@ export interface UserInterface { //(41) tipicizzo i parametri dell'array -> al p
             id: number;
             pnr: string;
             service: string;
-            name: string;
             lastname: string;
+            name: string;
             from: string;
             to: string;
             date: string;
