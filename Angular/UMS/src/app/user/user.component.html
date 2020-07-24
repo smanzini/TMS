@@ -10,11 +10,13 @@
     </td>
 
     <td class="buttons"> <!-- (26) aggiungo un altro td per il bottone Delete ed aggiungo il bottone e nel .css aggiungo lo stile button.delete dove delete è la classe, quindi qui devo aggiungere la classe "delete" (108) inserisco una PIPE per la currency (cercare su angular.io API list e poi PIPES) {{ value_expression | currency [ : currencyCode [ : display [ : digitsInfo [ : locale ] ] ] ] }} 
-    (119) aggiungo la classe buttons
+   
+    (119) aggiungo la classe buttons per poter mettere uno stile comune nel user.component.css
+
     (120) per aggiungere Fontawesome vedere su https://www.npmjs.com/package/@fortawesome/angular-fontawesome ma aggiungere anche npm install --save-dev @fortawesome/fontawesome-free perchè qui c'è anche .css 
     POI in angular.json aggiungere il css "/Users/stefanomanzini/TypescriptStart/Angular/UMS/node_modules/@fortawesome/fontawesome-free/css/all.css"
     -->
-        <div class="row"> <!-- (118) metto un div con BOOTSTRAP per il bottone DELETE -->
+        <div class="row"> <!-- (118) metto un div con BOOTSTRAP per i bottoni MODIFICA E DELETE -->
         <div class="col-sm-10"> <!-- (118) sm per small, vedi info su https://getbootstrap.com/docs/4.5/components/buttons/#button-tags-->
             <button class="btn btn-primary btn-sm" (click)="updateUser()"> 
                 <i class="fas fa-user-edit"></i>

@@ -27,13 +27,13 @@ button.update {  (61) aggiungo lo stile del bottone modifica
 
 */
 
-/* (120) aggiungo la classe .buttons con una larghezza minima di 80px e un padding 0*/
+/* (120) aggiungo la classe .buttons per definire lo stile dei bottoni con una larghezza minima di 80px e un padding 0*/
 
 .buttons {
     width: 80px;
 }
 
 .buttons div{
-padding: 0;
+padding: 10;
 }
 

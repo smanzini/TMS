@@ -5,16 +5,60 @@
     OPPURE provare <i class="fas fa-coffee"></i>    
 -->  
 
-<h1> Online Booking Platform </h1>
+<!-- <h1> Online Booking Platform </h1> -->
+
+<!-- *** NAVBAR (121) aggiungo la NavBar copiando codice html da Bootstrap esempi https://getbootstrap.com/docs/4.5/components/navbar/ -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><span class="badge badge-info"><i class="fas fa-plane fa-2x align-left"></i></span> <!-- (121) inserisco badge con Bootstrap e icona aereo con Fontawesome-->
+        Online Booking Platform</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" (click)="newUser()">New User</a> <!-- (121) inserisco qui New User -->
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+   <!-- *** NAVBAR END -->
 
 <!-- (112) NON mi applica correttamente la custom Pipe 'ucfirst', nel senso che non la riconosce come Pipe quella definita nel decorator in app.component.ts (?!?). Non mi riconosce se scrivo: {{ titleList | ucfirst }}
 style = "text-align: center;"
 -->
-<button class="btn btn-success" padding:10px (click)="newUser()"> NEW USER </button>
+<!-- (121) tolgo il bottone NEW USER in alto <button class="btn btn-success" (click)="newUser()"> NEW USER </button> e inserisco il New User nella Navbar con <a href"#"(click)="newUser()"> NEW USER </a>    
 
-<span class="badge badge-info"><i class="fas fa-plane"></i></span>
-<span class="badge badge-info">hotel</span>
-<span class="badge badge-info">auto</span>
+** BOTTONI **
+<span class="badge badge-info"><i class="fas fa-plane fa-2x"></i></span>
+<span class="badge badge-info"><i class="fas fa-hotel fa-2x"></i></span>
+<span class="badge badge-info"><i class="fas fa-car fa-2x"></i></span>
+-->
 
 <!-- 
 <button class="btn btn-primary btn-sm" aria-disabled="false"> 
@@ -31,7 +75,7 @@ style = "text-align: center;"
 
 
 <div class="=row"> <!-- (114) qui c'è una riga quindi al posto di "users" metto "row" con BOOTSTRAP-->
-<div class="col-md-8"> <!-- (115) con il comando "col-md-8" nella riga della tabella dove sono inseriti gli users, prenditi 8 colonne (con BOOTSTRAP)-->
+<div class="col-md-10"> <!-- (115) con il comando "col-md-8" nella riga della tabella dove sono inseriti gli users, prenditi 8 colonne (con BOOTSTRAP)-->
     <app-users (updateUser)="updateUser($event)"> </app-users> 
 </div>
 <!-- (68) ascolto in app-users il verificarsi dell'evento updateUser e quando accade, chiamo metodo updateUser -->
@@ -39,7 +83,7 @@ style = "text-align: center;"
 <!-- <app-user></app-user>  (21) quindi nel componente principale dell'app inserisco anche <app-user> -->
 
 
-    <div class="col-md-4" *ngIf="showTable">
+    <div class="col-md-3" *ngIf="showTable">
         <!-- (58) inserisco ngIF è una direttiva che mostra l'elemento solo se è TRUE; se l'elemento rimane nel dom e ce ne sono tanti diventa pesante la pagina; però occorre che questo ngIF sia dinamico inserendo un pulsante che l'utente viene selezionato per mostrare il form; (59) inserisco come proprietà di ngIF userSelected, ovvero mostra elemento solo nel caso in cui venga selezionato un utente (86) sostituisco userSelected con la variabile showTable, cioè il componente user-detail (sotto) viene mostrato non sulla base dell'utente, ma della variabile showTable in app.component.ts, ovvero se è false (utente non ancora selezionato) non viene mostrata, e se è true (utente selezionato) allora viene mostrata 
         (115)  qui c'è la tabella che si apre quando devo modificare un utente, quindi al posto di "userDetail" metto "row" con BOOTSTRAP oppure "col-4" per dire prenditi 4 colonne delle 9 totali (5 sopra +4), oppure "col-md-4" md sta per medium size, circa 960 pixel
         -->
