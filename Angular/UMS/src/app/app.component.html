@@ -1,12 +1,34 @@
 <div class="container-fluid"> <!-- (48) inserisco il comando div per definire le sezioni con classe main, users e userdetail; poi creerò a destra un nuovo componente della tabella per la sezione dove modificare utente; A <div> section in a document that is styled with CSS: The <div> tag defines a division or a section in an HTML document;
     (113) utilizzo BOOTSTRAP con il comando "container-fluid" al posto di "main" -->
 
+  <!-- accetta questo formato <fa-icon [icon]="faPlane" size="lg"></fa-icon> 
+    OPPURE provare <i class="fas fa-coffee"></i>    
+-->  
+
 <h1> Online Booking Platform </h1>
 
-<!-- (112) NON mi applica correttamente la custom Pipe 'ucfirst', nel senso che non la riconosce come Pipe quella definita nel decorator in app.component.ts (?!?). Non mi riconosce se scrivo: {{ titleList | ucfirst }}-->
+<!-- (112) NON mi applica correttamente la custom Pipe 'ucfirst', nel senso che non la riconosce come Pipe quella definita nel decorator in app.component.ts (?!?). Non mi riconosce se scrivo: {{ titleList | ucfirst }}
+style = "text-align: center;"
+-->
+<button class="btn btn-success" padding:10px (click)="newUser()"> NEW USER </button>
 
-<button class="button-create" style = "text-align: center;"(click)="newUser()"> NEW USER </button>
+<span class="badge badge-info"><i class="fas fa-plane"></i></span>
+<span class="badge badge-info">hotel</span>
+<span class="badge badge-info">auto</span>
+
+<!-- 
+<button class="btn btn-primary btn-sm" aria-disabled="false"> 
+<i class="fas fa-plane"></i>
+</button>
+<button class="btn btn-primary btn-sm" aria-disabled="false"> 
+    <i class="fas fa-hotel"></i>
+    </button>
+    <button class="btn btn-primary btn-sm" aria-disabled="false"> 
+        <i class="fas fa-car"></i>
+        </button>
+-->
 <!-- <a href="#" (click)="newUser()">Nuovo Utente</a> (92) inseriamo pulsante a, e con evento click chiamo il metodo newUser che devo andare a creare  -->
+
 
 <div class="=row"> <!-- (114) qui c'è una riga quindi al posto di "users" metto "row" con BOOTSTRAP-->
 <div class="col-md-8"> <!-- (115) con il comando "col-md-8" nella riga della tabella dove sono inseriti gli users, prenditi 8 colonne (con BOOTSTRAP)-->

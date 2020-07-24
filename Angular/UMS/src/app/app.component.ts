@@ -1,6 +1,8 @@
+import { RouterTestingModule } from '@angular/router/testing';
 import { UserInterface, userClass } from './interfaces/user-interface';
 import { UserComponent } from './user/user.component';
 import { Component } from '@angular/core';
+import { faCoffee, faPlane, faSuitcase } from '@fortawesome/free-solid-svg-icons';
 
 // (111) con il comando da terminale ng pipe ucfirst posso creare un file di pipe (nome a caso, ad es. ucfirst) per fare una custom pipe; altrimenti aggiungo in users.component.html o qui:
 
@@ -24,9 +26,12 @@ import { Pipe, PipeTransform} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  faPlane = faPlane;
+  faCoffee = faCoffee;
+  faSuitcase = faSuitcase;
   showTable: boolean = false; // (84) setto una variabile  showTable (Hidran chiama showForm) di tipo boolean (true or false) per poter mostrare la tabella solo nel momento in cui clicco il pulsante modifica (oppure il nuovo pusante aggiungi utente)
-  title = 'TMS';
-  titleList = 'user list retrieved from sap hr';
+  title = 'traveler list';
+  //titleList = 'user list retrieved from sap hr';
   userSelected: UserInterface = new userClass(); //(69) aggiungo userSelected che è di tipo UserInterface (Hidran lo chiama User); (83) instanzio una nuova classe userClass che ho definito in user-interface
   updateUser (user:UserInterface) //(70) chiamo il metodo updateUser perché l'utente che viene passato sarà quello selezionato
    {

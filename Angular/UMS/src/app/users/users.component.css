@@ -1,5 +1,6 @@
+/* (116) rimuovo tutto il .css perché lo gestisco con BOOTSTRAP
 table {
-    width:100%;
+    widows: 50%;
     border:2px solid rgb(3, 3, 17); 
 }
 
@@ -13,3 +14,4 @@ td {
     color: white;
     padding: 5px;
 }
+*/

@@ -16,10 +16,14 @@
     <caption {{ titleList | ucfirst}}
     -->
     
-    
-    <table>
-     <!-- {{ titleList | ucfirst}} {{title | uppercase | titlecase}} -->
-    <caption style = "font-weight:bold;color:blue; text-align:center; padding: 0.3cm">  {{title | uppercase | titlecase}} </caption> <!-- caption è il titolo e va messo subito dopo l'intestazione <table>; (10) fra doppie graffe {{ }} inserisco la variable o proprietà della classe UserComponent; (107) inserisco la PIPE con uppercase per tutto maiuscolo e titlecase per le prime lettere maiuscole-->
+    {{title | uppercase | titlecase}}  
+   
+            <!-- {{ titleList | ucfirst}} {{title | uppercase | titlecase}} -->
+           <!-- caption è il titolo e va messo subito dopo l'intestazione <table>; (10) fra doppie graffe {{ }} inserisco la variable o proprietà della classe UserComponent; (107) inserisco la PIPE con uppercase per tutto maiuscolo e titlecase per le prime lettere maiuscole-->
+
+        <table class="table table-striped"> <!-- (116) inserisco anche qui la classe BOOTSTRAP con table-striped che vuol dire colori alternati, e sm che vuol dire small 
+        <caption style = "font-weight:bold;color:red; text-align:center"> -->
+<thead> <!-- (116) vedere anche istruzioni e esempi BOOTSTRAP in https://getbootstrap.com/docs/4.5/content/tables/ -->
     <tr> <!-- The <tr> tag defines a row in an HTML table;a <tr> element contains one or more <th> or <td> elements. -->
     <th> PNR </th>
     <th> Servizio </th>
@@ -31,15 +35,17 @@
     <th> Tariffa </th>
     <th> Azioni </th> <!-- (25) aggiungo un altro th che è Actions-->
     </tr>
+</thead>
  <!-- (11) {{users | json}} pipe è la | e vuol dire prendi quello che c'è a sinistra e passalo come parametro a quello che c'è a destra, ovvero json cioè gli elementi dell'array; una direttiva è un costrutto che fa fare qualcosa nel template, ad esempio 'ngfor' è una direttiva-->
+ <tbody>
 <tr app-user="user" *ngFor = "let user of users" [user-data] = "user"
 (onDeleteUser) = "onDeleteUser ($event)"
-(onSelectUser) = "onSelectUser ($event)"
-> 
+(onSelectUser) = "onSelectUser ($event)"> 
  <!--  (64) aggiunto l'ASCOLTO dell'evento onSelectUser-->
 <!-- (36) qui ASCOLTO evento fra tonde perché è in uscita il valore (onDeleteuser) che è l'alias definito in user.component.ts l'accadere dell'evento e quando accade questo evento il padre  chiamerà il metodo onDeleteUser nella classe users e riceverà il valore $event. Ora occorre creare il metodo nel componente users.component.ts
 
     (12) aggiungo la direttiva ngfor e definisco 'user' come il singolo elemento dell'array 'users', così per ogni utente dell'array users cicla il singolo user. In TS o JS sarebbe for (let user of users) (23) sposto <app-user></app-user> da app.component.html qua e richiamo l'alias 'user-data' che ho definito in user.component.ts Il nome della variabile user-data (alias) è in input e assegno valore = "user"-->
     
     </tr>
+</tbody>
 </table>

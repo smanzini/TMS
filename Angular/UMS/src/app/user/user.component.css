@@ -1,3 +1,4 @@
+/* (116) rimuovo tutto il .css perché lo gestisco con BOOTSTRAP 
 td {
     background: rgb(46, 122, 236);
     color: white;
@@ -16,10 +17,23 @@ button.edit{
     background: white;
 }
 
-button.update { /* (61) aggiungo lo stile del bottone modifica */
+button.update {  (61) aggiungo lo stile del bottone modifica 
     padding: 5px;
     border: 2px solid blue;
     background: white;
     color: rgb(46, 122, 236);
     width: 110px;
 }
+
+*/
+
+/* (120) aggiungo la classe .buttons con una larghezza minima di 80px e un padding 0*/
+
+.buttons {
+    width: 80px;
+}
+
+.buttons div{
+padding: 0;
+}
+

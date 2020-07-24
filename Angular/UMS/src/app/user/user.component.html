@@ -1,13 +1,29 @@
-<td>{{ user.pnr}}</td> <!-- (13) td sono i dati dentro la tabella, quindi inserisco il singolo elemento dell'array users, ovvero user.name -->
+
+    <td>{{ user.pnr}}</td> <!-- (13) td sono i dati dentro la tabella, quindi inserisco il singolo elemento dell'array users, ovvero user.name -->
     <td>{{ user.service}}</td>
     <td>{{ user.lastname}}</td>
     <td>{{ user.name}}</td>
     <td>{{ user.from}}</td>
     <td>{{ user.to}}</td>
     <td>{{ user.date | date :'dd/MM/yyyy': 'GMT+1': 'it-IT'}}</td> <!-- (109) inserisco la PIPE DATE -->
-    <td>{{ user.rate | currency :'EUR':'symbol':'2.2-4': 'it-IT'}}</td>
-    <td> <!-- (26) aggiungo un altro td che è Delete ed aggiungo il bottone e nel .css aggiungo lo stile button.delete dove delete è la classe, quindi qui devo aggiungere la classe "delete" (108) inserisco una PIPE per la currency (cercare su angular.io API list e poi PIPES) {{ value_expression | currency [ : currencyCode [ : display [ : digitsInfo [ : locale ] ] ] ] }} -->
-        <button class="update" (click)="updateUser()"> MODIFICA </button> <!--(60) aggiungo il bottone per modifica utente; (62) inserisco il nuovo metodo updateUser -->
-        <button class="delete" (click)="deleteUser()"> CANCELLARE </button> <!-- (26) all'evento che chiamo click viene richiamato il metodo deleteUser che ho definito in user.component.ts e viene scritto il cognome-->
+    <td>{{ user.rate | currency :'EUR':'symbol':'2.2-4': 'it-IT'}}    
     </td>
-    <!-- (22) per creare una dipendenza fra componente padre (users) e componente figlio (user) prendo tutta la struttura (sopra) della tabella che avevto creato nel users.component.html e la sposto in user.component.html -->
+
+    <td class="buttons"> <!-- (26) aggiungo un altro td per il bottone Delete ed aggiungo il bottone e nel .css aggiungo lo stile button.delete dove delete è la classe, quindi qui devo aggiungere la classe "delete" (108) inserisco una PIPE per la currency (cercare su angular.io API list e poi PIPES) {{ value_expression | currency [ : currencyCode [ : display [ : digitsInfo [ : locale ] ] ] ] }} 
+    (119) aggiungo la classe buttons
+    (120) per aggiungere Fontawesome vedere su https://www.npmjs.com/package/@fortawesome/angular-fontawesome ma aggiungere anche npm install --save-dev @fortawesome/fontawesome-free perchè qui c'è anche .css 
+    POI in angular.json aggiungere il css "/Users/stefanomanzini/TypescriptStart/Angular/UMS/node_modules/@fortawesome/fontawesome-free/css/all.css"
+    -->
+        <div class="row"> <!-- (118) metto un div con BOOTSTRAP per il bottone DELETE -->
+        <div class="col-sm-10"> <!-- (118) sm per small, vedi info su https://getbootstrap.com/docs/4.5/components/buttons/#button-tags-->
+            <button class="btn btn-primary btn-sm" (click)="updateUser()"> 
+                <i class="fas fa-user-edit"></i>
+            </button> <!--(60) aggiungo il bottone per modifica utente; (62) inserisco il nuovo metodo updateUser (117) aggiungo lo stile con BOOTSTRAP al posto di update metto btn btn-primary -->
+        </div>
+
+        <div class="col-sm-10"> <!-- (118) sm per small -->
+        <button class="btn btn-danger btn-sm" (click)="deleteUser()"> <i class="fas fa-trash-alt"></i> </button> <!-- (26) all'evento che chiamo click viene richiamato il metodo deleteUser che ho definito in user.component.ts e viene scritto il cognome 117) aggiungo lo stile con BOOTSTRAP al posto di update metto btn btn-danger-->
+        </div>
+    </div>
+    </td>
+    <!-- (22) per creare una dipendenza fra componente padre (users) e componente figlio (user) prendo tutta la struttura (sopra) della tabella che avevto creato nel users.component.html e la sposto in user.component.html ok -->
