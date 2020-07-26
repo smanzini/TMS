@@ -25,10 +25,8 @@ import { Pipe, PipeTransform} from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
-  faPlane = faPlane;
-  faCoffee = faCoffee;
-  faSuitcase = faSuitcase;
   showTable: boolean = false; // (84) setto una variabile  showTable (Hidran chiama showForm) di tipo boolean (true or false) per poter mostrare la tabella solo nel momento in cui clicco il pulsante modifica (oppure il nuovo pusante aggiungi utente)
   title = 'traveler list';
   //titleList = 'user list retrieved from sap hr';

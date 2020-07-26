@@ -24,12 +24,13 @@ import { sharedStylesheetJitUrl } from '@angular/compiler';
 })
 export class UsersComponent implements OnInit { // (1) nomino la classe come users+component
     //(19) aggiungo implements OnInit. Angular ha degli hook cioè dei ganci in cui si verifica un evento e ci si può agganciare a quell'evento ad esempio la funzione oninit. Angular, una volta che il componente (o direttiva) è stato inizializzato, chiamerà automaticamente questa funzione (su angular.io cercare oninit)
-    title = "travellers report"; //(9) aggiungo la variabile o proprietà title che poi vado a pubblicare in users.component.html
+    title = "travellers list"; //(9) aggiungo la variabile o proprietà title che poi vado a pubblicare in users.component.html
     //titleListCustom = "user list retrieved from sap hr";//(110) aggiungo una stringa da trasformare con una pipe custom che creo io dove ogni prima lettera viene messa in maiuscola e bold
     users: UserInterface [] = []; //array (45) anche qui tipicizzo la variabile users e dico che è di tipo UserInterface (dove ci sono tutti i tipi dei parametri dell'array)
         // (14) invece di inserire qui gli elementi dell'array vado a creare un servizio esterno, quindi creo un file sotto users che chiamo user.service.ts (user al singolare)
    @Output() updateUser = new EventEmitter<UserInterface>(); // (66) inserisco un evento che chiamo updateUser in Output, Il componente figlio User può emettere un evento (es. modifica) e lo scala in alto al componente padre e che lo rilancia alla componente principalde dell’app (app.component) che lo ascolta
-        constructor (private service: UserService){ // (16) variabile di nome service di tipo private (vuol dire che la proprietà non è  accessibile dalle classi che ereditano dalla principale) della classe UserService; instanzio la classe come un dependancy injection, ma in questo caso no sa dove andare a prendere il servizio UserService, quindi bisogna dichiararlo come provider nel modulo app.module.ts
+    
+   constructor (private service: UserService){ // (16) variabile di nome service di tipo private (vuol dire che la proprietà non è  accessibile dalle classi che ereditano dalla principale) della classe UserService; instanzio la classe come un dependancy injection, ma in questo caso no sa dove andare a prendere il servizio UserService, quindi bisogna dichiararlo come provider nel modulo app.module.ts
         // const service = new UserService(): se non mi accetta let per definire la variabile service e non è utilizzata in altre parti, allora posso settarla come const; UserService è la classe definita nel file user.service.ts
     }    
     ngOnInit (){
