@@ -13,11 +13,13 @@
     <a class="navbar-brand" href="#"><span class="badge badge-info"><i class="fas fa-plane fa-2x align-left"></i></span> <!-- (121) inserisco badge con Bootstrap e icona aereo con Fontawesome-->
         Online Booking Platform</a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- (127) aggiungo sotto un evento (click)="toggleMenu" (che è un metodo) perchè quando riduco le dimensioni della finestra (responsive) possa vedere il menu  al click; poi devo inserire il metodo toggleMenu in app.component.ts -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="toggleMenu()" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <!-- (127) con Typescript aggiungo direttiva ngClass, ovvero aggiungo una variabile di Bootstrap a seconda del parametro, ad esempio classe show o classe hide con un ternario (?) cioè se è true mostra altrimenti hide in questo modo: [ngClass]="showMenu?'show' : 'hide'"; poi devo aggiungere la variabile showMenu in app.component.ts
+  in ALTERNATIVA uso il widget ngBootstrap 'collapse' https://ng-bootstrap.github.io/#/components/collapse/examples -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngClass]="showMenu?'show' : 'hide'"> 
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -48,6 +50,9 @@
   </nav>
 
    <!-- *** NAVBAR END -->
+
+<!-- (126) inserisco qui la FINESTRA MODALE inserendo il selector che vedo in modal-basic.component.ts ovvero app-modal-basic-->
+<app-modal-basic></app-modal-basic>
 
 <!-- (112) NON mi applica correttamente la custom Pipe 'ucfirst', nel senso che non la riconosce come Pipe quella definita nel decorator in app.component.ts (?!?). Non mi riconosce se scrivo: {{ titleList | ucfirst }}
 style = "text-align: center;"
