@@ -39,9 +39,14 @@ export class AppComponent {
     this.showTable = true; //(85) la variabile boolean viene settata a true solo se viene selezionato l'utente
     this.userSelected = user;
   }
-  toggleMenu(){ //(128) inserisco il metodo nell'AppComponent istruendolo di applicare il contrario del valore attuale (!) ovvero se prima era settato a true (vedi sopra showMenu = true), allora quando richiamato (ovvero il click) lo cambia a false e viceversa
-    this.showMenu = ! this.showMenu
-  }
+  
+  //(128) con Typescript inserisco il metodo nell'AppComponent istruendolo di applicare il contrario del valore attuale (!) ovvero se prima era settato a true (vedi sopra showMenu = true), allora quando richiamato (ovvero il click) lo cambia a false e viceversa, in questo modo:
+  // toggleMenu()
+  // { 
+  // this.showMenu = ! this.showMenu 
+  // }
+ 
+  isCollapsed = true; //(128) in ALTERNATIVA al metodo sopra toggleMenu con Typescript classico, inserisco il widget 'collapse' e qui metto con isCollapsed = true (cioè ridotta)
 
   newUser(){ //(92) creo il metodo newUser
     this.userSelected = new userClass(); //(92) se  è stato selezionato un utente per la modifica, ad esempio, userSelected sarà uguale all'utente selezionato, ma se voglio creare un nuovo utente  devo reinizializzare userSelected come new userClass in modo tale che scompaia la tabella

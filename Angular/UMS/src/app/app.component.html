@@ -13,13 +13,15 @@
     <a class="navbar-brand" href="#"><span class="badge badge-info"><i class="fas fa-plane fa-2x align-left"></i></span> <!-- (121) inserisco badge con Bootstrap e icona aereo con Fontawesome-->
         Online Booking Platform</a>
 
-        <!-- (127) aggiungo sotto un evento (click)="toggleMenu" (che è un metodo) perchè quando riduco le dimensioni della finestra (responsive) possa vedere il menu  al click; poi devo inserire il metodo toggleMenu in app.component.ts -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="toggleMenu()" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- (127) aggiungo sotto un evento (click)="toggleMenu" (che è un metodo) perchè quando riduco le dimensioni della finestra (responsive) possa vedere il menu  al click; poi devo inserire il metodo toggleMenu in app.component.ts 
+        ** in ALTERNATIVA uso il widget ngBootstrap 'collapse' che dice di inserire evento click che chiamo isCollapsed in questo modo (click)="isCollapsed = !isCollapsed"; poi inserisco la variabile isCollapsed in app.component.ts e la setto come true (cioè menu collapsed)
+        -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
   <!-- (127) con Typescript aggiungo direttiva ngClass, ovvero aggiungo una variabile di Bootstrap a seconda del parametro, ad esempio classe show o classe hide con un ternario (?) cioè se è true mostra altrimenti hide in questo modo: [ngClass]="showMenu?'show' : 'hide'"; poi devo aggiungere la variabile showMenu in app.component.ts
-  in ALTERNATIVA uso il widget ngBootstrap 'collapse' https://ng-bootstrap.github.io/#/components/collapse/examples -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngClass]="showMenu?'show' : 'hide'"> 
+  ** in ALTERNATIVA uso il widget ngBootstrap 'collapse' https://ng-bootstrap.github.io/#/components/collapse/examples dove spiega che la direttiva è [ngbCollapse]="isCollapsed"-->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed"> 
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
