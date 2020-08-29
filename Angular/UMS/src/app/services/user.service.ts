@@ -1,4 +1,4 @@
-import { UserInterface } from './../interfaces/user-interface'; // (43) in automatico Angular importa UserInterface
+import { UserInterface, userClass } from './../interfaces/user-interface'; // (43) in automatico Angular importa UserInterface
 // (15) creo una classe UserService (che esporto) perché un domani per esempio vado a prendere i dati dell'array da un server in maniera dinamica
 // (38) creo la cartella services e ci metto il file user.service.ts che era prima nel folder users
 import { Injectable } from '@angular/core';

@@ -33,7 +33,7 @@ export class AppComponent {
   title = 'traveler list';
   //titleList = 'user list retrieved from sap hr';
   userSelected: UserInterface = new userClass(); //(69) aggiungo userSelected che è di tipo UserInterface (Hidran lo chiama User); (83) instanzio una nuova classe userClass che ho definito in user-interface
-  showMenu = false; //(127) aggiungo variabile showMenu nelle proprietà dell'AppComponent e la setto come flase (ovvero non la fa vedere)
+  showMenu = false; //(127) aggiungo variabile showMenu nelle proprietà dell'AppComponent e la setto come false (ovvero non la fa vedere)
   updateUser (user:UserInterface) //(70) chiamo il metodo updateUser perché l'utente che viene passato sarà quello selezionato
    {
     this.showTable = true; //(85) la variabile boolean viene settata a true solo se viene selezionato l'utente

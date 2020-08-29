@@ -23,23 +23,33 @@
   ** in ALTERNATIVA uso il widget ngBootstrap 'collapse' https://ng-bootstrap.github.io/#/components/collapse/examples dove spiega che la direttiva è [ngbCollapse]="isCollapsed"-->
     <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed"> 
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink=" ">Home </a> <!-- (133) dobbiamo anche dire quando clicchiamo sul link dove andare a caricare i moduli e poi mettere i link che puntano ai rispettivi url, QUINDI -> tolgo <span class="sr-only">(current)</span> ed inserisco la direttiva routerlink (che viene importata con RouterModule) e inserisco il link a cui puntare. Inizialmente se ispeziono la pagina dell'applicazione (sotto console) mi dà "Error: Invalid configuration of route '/': path cannot start with a slash" perchè mi dice che nella pagina principale che leggo in index.hmtl è scritto <base href="/"> cioè la pagina principale inizia già con /, quindi devo lasciare vuoto il link " " -->
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" (click)="newUser()">New User</a> <!-- (121) inserisco qui New User -->
+          <a class="nav-link" href="#" routerLink="users">Users</a> <!-- (134) inserisco un altro routerlink che chiamo users -->
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/users/new">NEW User</a> <!-- (121) inserisco qui New User 
+          (135) tolgo (click)="newUser()" che non mi serve più perché inserisco un'altra direttiva ancora routerlink New User-->
+        </li>
+        <li class="nav-item"> 
+          <a class="nav-link" href="#" routerLink="/users/:id/edit">Edit</a> <!-- (140) inserisco un un bottone normale come quelli sopra e un altro routerlink che chiamo Edit -->
+        </li>
+        
+          <!-- (139) tolgo il bottone DROPDOWN e definisco un bottone normale come quelli sopra. Il DROPDOWN era:
+
+          <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
+            Edit
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
+            -->
+         
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
@@ -54,6 +64,7 @@
    <!-- *** NAVBAR END -->
 
 <!-- (126) inserisco qui la FINESTRA MODALE inserendo il selector che vedo in modal-basic.component.ts ovvero app-modal-basic-->
+
 <app-modal-basic></app-modal-basic>
 
 <!-- (112) NON mi applica correttamente la custom Pipe 'ucfirst', nel senso che non la riconosce come Pipe quella definita nel decorator in app.component.ts (?!?). Non mi riconosce se scrivo: {{ titleList | ucfirst }}
@@ -81,21 +92,30 @@ style = "text-align: center;"
 <!-- <a href="#" (click)="newUser()">Nuovo Utente</a> (92) inseriamo pulsante a, e con evento click chiamo il metodo newUser che devo andare a creare  -->
 
 
+
 <div class="=row"> <!-- (114) qui c'è una riga quindi al posto di "users" metto "row" con BOOTSTRAP-->
-<div class="col-md-10"> <!-- (115) con il comando "col-md-8" nella riga della tabella dove sono inseriti gli users, prenditi 8 colonne (con BOOTSTRAP)-->
-    <app-users (updateUser)="updateUser($event)"> </app-users> 
+  <div class ="col-12"> <!-- (137) aggiungo col-12 -->
+ <router-outlet></router-outlet>  <!-- (137) aggiungo il tag router-outlet dove il componente users verrà renderizzato -->
+  </div>
 </div>
+</div>
+
 <!-- (68) ascolto in app-users il verificarsi dell'evento updateUser e quando accade, chiamo metodo updateUser -->
 <!-- (4) devo dichiarare questo componente in Angular cioè bisogna istruire Angular per caricare questo componente in app.module.ts -->
 <!-- <app-user></app-user>  (21) quindi nel componente principale dell'app inserisco anche <app-user> -->
 
+  <!-- (136) non mi serve più la formattazione sotto 
+  <div class="col-md-10"> (115) con il comando "col-md-8" nella riga della tabella dove sono inseriti gli users, prenditi 8 colonne (con BOOTSTRAP)
+    <app-users (updateUser)="updateUser($event)"> </app-users> 
+</div>
 
     <div class="col-md-3" *ngIf="showTable">
-        <!-- (58) inserisco ngIF è una direttiva che mostra l'elemento solo se è TRUE; se l'elemento rimane nel dom e ce ne sono tanti diventa pesante la pagina; però occorre che questo ngIF sia dinamico inserendo un pulsante che l'utente viene selezionato per mostrare il form; (59) inserisco come proprietà di ngIF userSelected, ovvero mostra elemento solo nel caso in cui venga selezionato un utente (86) sostituisco userSelected con la variabile showTable, cioè il componente user-detail (sotto) viene mostrato non sulla base dell'utente, ma della variabile showTable in app.component.ts, ovvero se è false (utente non ancora selezionato) non viene mostrata, e se è true (utente selezionato) allora viene mostrata 
+        (58) inserisco ngIF è una direttiva che mostra l'elemento solo se è TRUE; se l'elemento rimane nel dom e ce ne sono tanti diventa pesante la pagina; però occorre che questo ngIF sia dinamico inserendo un pulsante che l'utente viene selezionato per mostrare il form; (59) inserisco come proprietà di ngIF userSelected, ovvero mostra elemento solo nel caso in cui venga selezionato un utente (86) sostituisco userSelected con la variabile showTable, cioè il componente user-detail (sotto) viene mostrato non sulla base dell'utente, ma della variabile showTable in app.component.ts, ovvero se è false (utente non ancora selezionato) non viene mostrata, e se è true (utente selezionato) allora viene mostrata 
         (115)  qui c'è la tabella che si apre quando devo modificare un utente, quindi al posto di "userDetail" metto "row" con BOOTSTRAP oppure "col-4" per dire prenditi 4 colonne delle 9 totali (5 sopra +4), oppure "col-md-4" md sta per medium size, circa 960 pixel
-        -->
-        <app-user-detail class="userDetail" [user]= "userSelected"> <!-- (73) per ricevere la variabile user in Input la metto fra parentesi quadre -->
-    </app-user-detail> <!-- (52) inserisco il tag del selettore del componente appena creato user-detail -->
+      
+        <app-user-detail class="userDetail" [user]= "userSelected"> (73) per ricevere la variabile user in Input la metto fra parentesi quadre
+    </app-user-detail> (52) inserisco il tag del selettore del componente appena creato user-detail 
     </div>
-    </div>
-</div>
+    -->
+
+   

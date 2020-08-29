@@ -2,6 +2,7 @@ import { UserInterface, userClass } from './../interfaces/user-interface';
 //(50) creo da riga di comando il componente user-detail che serve per le operazioni di modifica sulla destra della tabella, con il comando da terminale ng generate component user-detail (o abbreviato ng g c user-detail)
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-detail', //(51) leggo qui con che nome è stato creato il componente, ovvero il selettore 'app-user-detail' e questo sarà il tag che dovrò richiamare nel mio app.component.html
@@ -23,9 +24,18 @@ export class UserDetailComponent implements OnInit {
   }
 constructor(private userServiceVar: UserService) { 
   //this.userServiceVar = userServiceVar;
+  //(142) creo una variabile privata che chiamo route di tipo ActivatedRoute (che è un servizio del RouterModule) -> private routeVar: ActivatedRoute
 }
 
   ngOnInit(): void {
+    this.user = new userClass(); //(141) quando carico questo componente se non c'è un utente selezionato, allora carico un nuovo utente (Hydran lo chiama User, io lo chiamo userClass)
+    // this.routeVar.params.subscribe (
+      //(142) non appena viene attivata questa rotta accedo alla variabile che chiamo paramsId avendo accesso all'ID che viene passato dalla rotta; 
+      // (paramsId) => {
+        // this.user = this.userServiceVar.getUsers();
+        //(143) inizializzo l'utente caricando l'utente che si trova a quell'ID con -> avevamo già creato getUser in user.service.ts con ID che partiva da 1 per il primo utente
+    
+    
   }
   saveUser(){ //(79) inserisco il metodo saveUser e metto un alert indicando l'utente
     if(this.user.id >0) {
