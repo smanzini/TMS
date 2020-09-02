@@ -45,9 +45,14 @@ export class UserService {
        // constructor (url:string) { 
         // this.url = url;
     }
-        getUsers (){ // è il metodo della classe array
-            return this.users;
+        getUsers () { // è il metodo della classe array, getUsers riceve un id e ritorna l'utente che è in quella posizione id; valido in generale per ritornare TUTTI gli utenti;
+            return this.users; //(141) inizialmente era getUsers(){ return this.users; }
                      } 
+
+        getUser (id:number): UserInterface {
+            return this.users[id-1];
+             //(146) però non devo inserire id perché l'id parte da 1 (vedi qui sopra l'array degli users) mentre in realtà l'indice dell'utente pate da 0 -> quindi o metto return this.users[id-1], oppure trovo l'indice che abbia quell'id, con il comando find (MA a me non viene), ritorna (=>) valore TRUE quando user.id è uguale ad id attuale: return this.users.find (user => user.id === id)
+        }
         deleteUser (user) { // (30) aggiungo il metodo nel componente padre (users) deleteUser per cancellare gli utenti, che poi verrà richiamato nel componente figlio (user)
             let index = this.users.indexOf(user); //(31) devo definire l'indice dell'elemento array che poi devo andare a cancellare
             if (index>=0) {
@@ -58,7 +63,7 @@ export class UserService {
             // (89) creo il metodo updateUser
         updateUser(user: UserInterface) { // (90) occorre trovare l'id dell'utente nell'array users per andare ad aggiornare l'utente giusto; uso findIndex che è una funzione che ritorna true se trova il valore v all'interno della parentesi; se id dell'utente passato dalla funzione è lo stesso id dell'utente che dobbiamo aggiornare
             const idx = this.users.findIndex((v) => v.id === user.id);
-            alert(idx);
+            alert("Utente "+ user.name+ " "+ user.lastname+ " aggiornato" + " Indice= "+idx+" Id= " + user.id);
             if (idx !== -1) { //(91) se idx è diverso da -1 vuol dire che la costante idx è quella giusta, quindi andiamo ad aggiornare l'array
             this.users[idx] = user;
             }

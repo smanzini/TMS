@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class UserDetailComponent implements OnInit {
   private userCopy: UserInterface; //(101) creo una copia dell'oggetto user
   private _user: UserInterface; //(102) creo un'altra variabile private _user e poi faccio un SETTER e GETTER di questa variabile
-  @Input() set user(user: UserInterface){ // (72) devo creare una variabile di tipo input per ricevere i dati dal form modifica, quindi user di tipo UserInterface
+  @Input() set user(user: UserInterface){ // (72) devo creare una variabile di tipo input per ricevere i dati dal form modifica che scatena un evento, quindi user di tipo UserInterface
   //(88) devo iniettare il servizio UserService nel constructor, definendo la varibile private userServiceVar di tipo UserService, così mi crea automaticamente la variabile userServiceVar e la popola nel constructor (ovvero come this.userServiceVar = userServiceVar)
   //(102) uso la funzione SET (SETTER) che riceve un user di tipo UserInterface
   this._user = user; //(103) definisco la variabile private _user come uguale a user 
@@ -22,24 +22,25 @@ export class UserDetailComponent implements OnInit {
   get user() { //(105) mapo anche la funzione GETTER 
     return this._user;
   }
-constructor(private userServiceVar: UserService) { 
+constructor(private userServiceVar: UserService, private routeVar: ActivatedRoute) { 
   //this.userServiceVar = userServiceVar;
-  //(142) creo una variabile privata che chiamo route di tipo ActivatedRoute (che è un servizio del RouterModule) -> private routeVar: ActivatedRoute
+  //(142) creo una variabile privata che chiamo routeVar (Hydran la chiama route) di tipo ActivatedRoute (che è un servizio del RouterModule) -> private routeVar: ActivatedRoute
 }
 
-  ngOnInit(): void {
-    this.user = new userClass(); //(141) quando carico questo componente se non c'è un utente selezionato, allora carico un nuovo utente (Hydran lo chiama User, io lo chiamo userClass)
-    // this.routeVar.params.subscribe (
-      //(142) non appena viene attivata questa rotta accedo alla variabile che chiamo paramsId avendo accesso all'ID che viene passato dalla rotta; 
-      // (paramsId) => {
-        // this.user = this.userServiceVar.getUsers();
-        //(143) inizializzo l'utente caricando l'utente che si trova a quell'ID con -> avevamo già creato getUser in user.service.ts con ID che partiva da 1 per il primo utente
-    
-    
-  }
+  ngOnInit() { //(141) tolto :void
+      this.user = new userClass(); //(141) LEZIONE 43 quando carico questo componente se non c'è un utente selezionato, allora carico un nuovo utente (Hydran lo chiama User, io lo chiamo userClass)
+      this.routeVar.params.subscribe
+      //(142) non appena viene attivata questa rotta utilizzo il servizio ActivatedRoute (con subscribe, il comando this.routeVar.params.subscribe è fisso nel senso che params è il comando da dare) e così accedo alla variabile che posso chiamare come voglio, in questo caso paramsId (sotto) per recuperare l'ID che viene passato dalla rotta; 
+      (params => {
+        // alert (" params id o utente " + params.id);
+        this.user = this.userServiceVar.getUser(+params.id); // + per il cast ad integer, numero intero
+      }); // (143) VEDI su https://angular.io/guide/router#getting-route-information -> this.user = params ['user']
+        //(143) paramsId) => { this.user = this.userServiceVar.getUsers(paramsId.id); inizializzo l'utente caricando l'utente che si trova a quell'ID con -> avevamo già creato getUsers in user.service.ts con ID che partiva da 1 per il primo utente; ORA bisgna creare anche getUser per il singolo utente con l'id
+              }    
+             
   saveUser(){ //(79) inserisco il metodo saveUser e metto un alert indicando l'utente
     if(this.user.id >0) {
-      this.userServiceVar.updateUser(this.user); //(91) quindi vado ad aggiornare l'utente user //(87) se id è > 0 allora l'utente esiste già e quindi devo aggiornare l'utente chiamando il servizio UserService, altrimenti devo salvare un nuovo utente
+      this.userServiceVar.updateUser(this.user); //(91) quindi vado ad aggiornare l'utente user //(87) se id è > 0 allora l'utente esiste già e quindi devo aggiornare l'utente chiamando il servizio updateUser, altrimenti devo salvare un nuovo utente
     } else { //(95) se l'utente ha id =0 allora vuol dire che è un nuovo utente, quindi chiamo il metodo createUser
       this.userServiceVar.createUser(this.user);
           }

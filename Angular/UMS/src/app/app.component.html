@@ -24,7 +24,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed"> 
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#" routerLink=" ">Home </a> <!-- (133) dobbiamo anche dire quando clicchiamo sul link dove andare a caricare i moduli e poi mettere i link che puntano ai rispettivi url, QUINDI -> tolgo <span class="sr-only">(current)</span> ed inserisco la direttiva routerlink (che viene importata con RouterModule) e inserisco il link a cui puntare. Inizialmente se ispeziono la pagina dell'applicazione (sotto console) mi dà "Error: Invalid configuration of route '/': path cannot start with a slash" perchè mi dice che nella pagina principale che leggo in index.hmtl è scritto <base href="/"> cioè la pagina principale inizia già con /, quindi devo lasciare vuoto il link " " -->
+          <a class="nav-link" href="#" routerLink="">Home </a> <!-- (133) dobbiamo anche dire quando clicchiamo sul link dove andare a caricare i moduli e poi mettere i link che puntano ai rispettivi url, QUINDI -> tolgo <span class="sr-only">(current)</span> ed inserisco la direttiva routerlink (che viene importata con RouterModule) e inserisco il link a cui puntare. Inizialmente se ispeziono la pagina dell'applicazione (sotto console) mi dà "Error: Invalid configuration of route '/': path cannot start with a slash" perchè mi dice che nella pagina principale che leggo in index.hmtl è scritto <base href="/"> cioè la pagina principale inizia già con /, quindi devo lasciare vuoto il link " " -->
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" routerLink="users">Users</a> <!-- (134) inserisco un altro routerlink che chiamo users -->
@@ -48,16 +48,17 @@
             <a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a>
-            -->
+           
          
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabbled</a>
+        </li>  -->
+
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      </form> 
     </div>
   </nav>
 
@@ -95,8 +96,9 @@ style = "text-align: center;"
 
 <div class="=row"> <!-- (114) qui c'è una riga quindi al posto di "users" metto "row" con BOOTSTRAP-->
   <div class ="col-12"> <!-- (137) aggiungo col-12 -->
- <router-outlet></router-outlet>  <!-- (137) aggiungo il tag router-outlet dove il componente users verrà renderizzato -->
-  </div>
+ <router-outlet></router-outlet>  <!-- (137) aggiungo il tag router-outlet dove il componente verrà renderizzato -->
+  
+</div>
 </div>
 </div>
 

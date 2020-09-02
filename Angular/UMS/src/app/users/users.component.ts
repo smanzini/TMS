@@ -9,7 +9,7 @@ import { UserService } from '../services/user.service';
 //
 
 import { Component, OnInit, Output, EventEmitter } from '@angular/core'; //con l’autocomplete l’editor in automatico inserisce da dove deve importare il componente from @angular/core + importa anche la funzione OnInit
-import { sharedStylesheetJitUrl } from '@angular/compiler';
+import { sharedStylesheetJitUrl, Identifiers } from '@angular/compiler';
 
 
 @Component({ // (2) definisco un decorator che è una funzione che aggiunge delle proprietà ad una classe normale
@@ -28,7 +28,7 @@ export class UsersComponent implements OnInit { // (1) nomino la classe come use
     //titleListCustom = "user list retrieved from sap hr";//(110) aggiungo una stringa da trasformare con una pipe custom che creo io dove ogni prima lettera viene messa in maiuscola e bold
     users: UserInterface [] = []; //array (45) anche qui tipicizzo la variabile users e dico che è di tipo UserInterface (dove ci sono tutti i tipi dei parametri dell'array)
         // (14) invece di inserire qui gli elementi dell'array vado a creare un servizio esterno, quindi creo un file sotto users che chiamo user.service.ts (user al singolare)
-   @Output() updateUser = new EventEmitter<UserInterface>(); // (66) inserisco un evento che chiamo updateUser in Output, Il componente figlio User può emettere un evento (es. modifica) e lo scala in alto al componente padre e che lo rilancia alla componente principalde dell’app (app.component) che lo ascolta
+   @Output() updateUser = new EventEmitter<UserInterface>(); // (66) inserisco un evento che chiamo updateUser in Output, Il componente figlio User può emettere un evento (es. modifica) e lo scala in alto al componente padre e che lo rilancia alla componente principale dell’app (app.component) che lo ascolta -> evento in user.component.html <button class="btn btn-primary btn-sm" (click)="updateUser()"> 
     
    constructor (private service: UserService){ // (16) variabile di nome service di tipo private (vuol dire che la proprietà non è  accessibile dalle classi che ereditano dalla principale) della classe UserService; instanzio la classe come un dependancy injection, ma in questo caso no sa dove andare a prendere il servizio UserService, quindi bisogna dichiararlo come provider nel modulo app.module.ts
         // const service = new UserService(): se non mi accetta let per definire la variabile service e non è utilizzata in altre parti, allora posso settarla come const; UserService è la classe definita nel file user.service.ts
@@ -40,16 +40,16 @@ export class UsersComponent implements OnInit { // (1) nomino la classe come use
 
 
     onDeleteUser (user:UserInterface){ //(37) creo il metodo onDeleteUser che riceve user di tipo UserInterface (Hidran invece lo ha chiamato User) che è nel file user-interface
-        alert ("Conferma cancellazione prenotazione per " + user.name + " " + user.lastname);
+        alert ("Conferma cancellazione prenotazione per utente" + user.id + " " + user.name + " " + user.lastname);
         this.service.deleteUser(user);
     }
 
         //alert ("Conferma cancellazione prenotazione per " + user.name + " " + user.lastname);
     onSelectUser (user:UserInterface) {
-        alert("Conferma modifica prenotazione per" + user.name + " " + user.lastname)
+        alert("Conferma modifica prenotazione per utente" + user.id + " " + user.name + " " + user.lastname) // 
         // (65) implemento il metodo onSelectUser
         const userCopy = Object.assign({},user);
-        this.updateUser.emit(userCopy);
+        this.updateUser.emit(userCopy); // (67) evento in user.component.html <button class="btn btn-primary btn-sm" (click)="updateUser()"> 
         //(67) emetto evento updateUser che viene lanciato all'esterno e l'app.component può ascoltare l'evento
         // (76) creo un oggetto user che è una copia in modo tale che se modifico i dati dell'utente user nella tabella modifica, non vengono modificati nella tabella degli users fintantoché non clicco il bottone SALVA; (77) definisco una costante che chiamo userCopy con il comando assign, ovvero assegna il valore di destra user al valore di sinistra che in questo caso è vuoto 
     }

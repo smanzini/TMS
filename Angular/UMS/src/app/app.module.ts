@@ -22,7 +22,7 @@ import { NgbdModalBasic } from './modal-basic/modal-basic.component'; //(125) **
     UsersComponent, // (5) istruisco Angular di caricare sia AppComponent che UsersComponent
     // con l'autocomplete l'editor in automatico inserisce l'istruzione import { UsersComponent } from './users/users.component';
     UserComponent,
-    UserDetailComponent, // il componente UserDetailComponent serve per le operazioni di modifica
+    UserDetailComponent, // il componente UserDetailComponent serve per le operazioni di modifica dell'utente (edit)
     NgbdModalBasic,
     // (124) STEP 4 aggiungo NgdbCollapseNavbar
   ],

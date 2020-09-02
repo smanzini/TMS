@@ -11,7 +11,7 @@ const routes: Routes = [ // è un array di dati
   component: UsersComponent // (129) inserisco il componente che voglio venga mostrato con questa rotta
 },
 {
-  path:' ', //(131) Inserisco un'altra rotta ma lascio lo spazio vuoto (perché nella pagina principale che leggo in index.hmtl è scritto <base href="/"> cioè la pagina principale inizia già con /, quindi devo lasciare spazio vuoto) e inserisco un redirectTo che vuol dire che se inserita la / viene rediretto sulla rotta users
+  path:'', //(131) Inserisco un'altra rotta ma lascio lo spazio vuoto (perché nella pagina principale che leggo in index.hmtl è scritto <base href="/"> cioè la pagina principale inizia già con /, quindi devo lasciare spazio vuoto) e inserisco un redirectTo che vuol dire che se inserita la / viene rediretto sulla rotta users
   pathMatch: 'full', //vuol dire che deve coincidere perfettamente
   redirectTo: 'users'
 },
@@ -20,7 +20,7 @@ const routes: Routes = [ // è un array di dati
   component: UserDetailComponent // inserisco il componente che voglio venga mostrato con questa rotta; qui Hydran inserisce UserComponent MA poi si vede (mica lo dice lui!!!) che ha cambiato in UserDetailComponent, anche perché non è possibile che venga richiamato lo stesso componente sia per mostrare gli utenti esistenti che per crearne uno nuovo!
 },
 {
-  path:'users/:id/edit', //(138) Inserisco un'altra rotta per EDIT che cattura il parametro id, con un servizio che ha RouterModule, che si chiama activatedRoute per leggere il parametro in user-detail.component.ts
+  path:'users/:id/edit', //(138) Inserisco un'altra rotta per EDIT (placeholder) che cattura il parametro id, con un servizio che ha RouterModule, che si chiama activatedRoute per leggere il parametro in user-detail.component.ts
   component: UserDetailComponent // (138) inserisco il componente che voglio venga mostrato con questa rotta; se è esistente lo prendo da user-detail.component.ts, altrimenti lo inizializzo 
 },
 

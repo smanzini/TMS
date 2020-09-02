@@ -4,6 +4,7 @@ import { UserService } from '../services/user.service'; //(28) in automatico mi 
 // (20) Da terminal con il comando ng generate component user (oppure abbreviato ng g c user) creo un altro componente, simile al componente users che ho generato e mi crea automaticamente tutti i file sotto user: user.component.css, user.component.html, user.component.spec.ts, user.component.ts e crea anche la declaration in app.module.ts e l’import
 
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 //(35) viene importato automaticamente da Angular core il gestore eventi
 //import {FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 //import { faSuitcase, faUser } from '@fortawesome/free-solid-svg-icons';  
@@ -21,7 +22,7 @@ export class UserComponent implements OnInit {
 //@Output ('onDeleteUser') userDelete new EventEmitter(); (34) dichiaro la variabile output per definire un evento esterno (userDelete) con un alias 'onDeleteuser' e inizializzo la variabile come un evento new (perché è una nuova istanza) di EventEmitter che è un gestore eventi che si trova in Angular core
 //@Output ('userSelected') onSelectUser = new EventEmitter(); //(64) inserisco @Output anche l'evento esterno come alias onSelectUser
   
-constructor(private userService: UserService) { } //(28) se voglio eliminare uno user, devo inserire come dipendenza nel constructor la classe userService di tipo UserService
+constructor(private userService: UserService, private routerVar: Router ) { } //(28) se voglio eliminare uno user, devo inserire come dipendenza nel constructor la classe userService di tipo UserService (144) Inserisco variabile routerVar (Hydran la chiama route) di tipo Router (non ActivatedRouter che serve per attivare le rotte, ma Router serve per navigare)
 
   ngOnInit() {
               }
@@ -34,7 +35,10 @@ deleteUser (){ //(27) aggiungo un metodo deleteUser che riceve il valore user
   //this.userService.deleteUser(this.user); //(32) chiamo il metodo deleteUser (dalla classe userService per cancellare this.user) (33) NEW faccio richiamare il metodo direttamente dal componente padre (users)
               }
 
-  updateUser (){  //(63) inserisco il metodo updateUser
+  updateUser (){  
+    //(145) aggiungo la navigazione nel metodo updateUser che dovrà navigare sulla rotta EDIT con l'id dell'utente selezionato 
+  this.routerVar.navigate(['users', this.user.id, 'edit']);
+    //(63) inserisco il metodo updateUser
   this.onSelectUser.emit (this.user);
                   }
                 }
